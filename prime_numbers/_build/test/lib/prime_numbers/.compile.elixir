@@ -1,1 +1,1 @@
-_build/test/lib/prime_numbers/ebin/Elixir.PrimeNumbers.beam	Elixir.PrimeNumbers	lib/prime_numbers.ex	erlang	Elixir
+_build/test/lib/prime_numbers/ebin/Elixir.PrimeNumbers.beam	Elixir.PrimeNumbers	lib/prime_numbers.ex	Elixir.Enum	Elixir.Kernel	erlang	Elixir
