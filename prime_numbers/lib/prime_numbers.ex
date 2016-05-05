@@ -1,25 +1,24 @@
 defmodule PrimeNumbers do
-  def generate(0) do
-    ""
-  end
+  def generate(0), do: ""
+  def generate(1), do: [2]
+  def generate(number_to_generate), do: generate_primes([2], number_to_generate, 3)
 
-  def generate(1) do
-    [2]
-  end
-
-  def generate(number_to_generate) do
-    generate_recurssive(number_to_generate, [2], 1)
-  end
-
-  defp generate_recurssive(no_of_requested_primes, result, index) do
-    if no_of_requested_primes == Enum.count(result) do
-      result
+  defp generate_primes(primes_so_far, no_of_requested_primes, possible_prime) do
+    if no_of_requested_primes == Enum.count(primes_so_far) do
+      primes_so_far
     else
-      potential_prime = index + 2
-      cond do
-        is_prime?(potential_prime, result) == true -> generate_recurssive(no_of_requested_primes, result ++ [potential_prime], potential_prime)
-        is_prime?(potential_prime, result) == false -> generate_recurssive(no_of_requested_primes, result, potential_prime)
-      end
+      primes_so_far
+        |> try_add_prime(possible_prime)
+        |> generate_primes(no_of_requested_primes, possible_prime + 2)
+    end
+  end
+
+  defp try_add_prime(primes, possible_prime) do
+    cond do
+      is_prime?(possible_prime, primes) ->
+        primes ++ [possible_prime]
+      !is_prime?(possible_prime, primes) ->
+        primes
     end
   end
 

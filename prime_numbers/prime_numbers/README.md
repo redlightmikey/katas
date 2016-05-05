@@ -1,4 +1,0 @@
-PrimeNumbers
-============
-
-** TODO: Add description **
