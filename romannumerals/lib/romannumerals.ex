@@ -1,24 +1,22 @@
 defmodule RomanNumerals do
 
+@arabic_conversions %{50 =>"L", 10 => "X", 5 => "V", 1 => "I"}
+
   def to_roman_numerals(input_number) do
-    recursive_roman_numerals(input_number, "")
+    recursive_roman_numerals(input_number, "", Enum.reverse(@arabic_conversions))
   end
 
-  defp conversion_factors do
-    [
-      {1000, "M"},
-      {50, "L"}
-    ]
-  end
-
-  defp recursive_roman_numerals(input_number, final_result ) do
-    cond do
-      input_number >= 50 -> recursive_roman_numerals(input_number - 50, "L" <> final_result)
-      input_number >= 10 -> recursive_roman_numerals(input_number - 10, "X" <> final_result)
-      input_number >= 5 -> recursive_roman_numerals(input_number - 5, final_result <> "V")
-      input_number >= 1 -> recursive_roman_numerals(input_number - 1, final_result <> "I")
-      input_number == 0 -> final_result
+  defp recursive_roman_numerals(input_number, final_result, conversion ) do
+    Enum.reduce conversion, fn({arabic, roman}, acc) ->
+      cond do
+        input_number >= arabic ->
+          recursive_roman_numerals(input_number - arabic, roman <> final_result, acc)
+        arabic > 0 ->
+          recursive_roman_numerals(input_number, final_result, acc)
+        true ->
+          "poo"
+      end
     end
-  end
 
+  end
 end
