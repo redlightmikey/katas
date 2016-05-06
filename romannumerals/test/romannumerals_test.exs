@@ -46,5 +46,4 @@ defmodule RomannumeralsTest do
       assert RomanNumerals.to_roman_numerals(50) == "L"
     end
 
-
 end
