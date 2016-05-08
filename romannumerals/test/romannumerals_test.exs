@@ -45,4 +45,16 @@ defmodule RomannumeralsTest do
     assert RomanNumerals.to_roman_numerals(50) == "L"
   end
 
+  test "when pass 4 it returns IV" do
+    assert RomanNumerals.to_roman_numerals(4) == "IV"
+  end
+
+  test "when pass 19 it returns XIX" do
+    assert RomanNumerals.to_roman_numerals(19) == "XIX"
+  end
+
+  test "when pass 9 it returns IX" do
+    assert RomanNumerals.to_roman_numerals(9) == "IX"
+  end
+
 end
