@@ -33,7 +33,6 @@ defmodule RomannumeralsTest do
     assert RomanNumerals.to_roman_numerals(15) == "XV"
   end
 
-
     test "when pass 20 it returns XX" do
       assert RomanNumerals.to_roman_numerals(20) == "XX"
     end
